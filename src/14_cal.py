@@ -22,3 +22,31 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+
+now = datetime.now()
+
+
+def render_calendar():
+
+    try:
+        #gets current year and month
+        year = now.year
+        month = now.month
+
+        #gets length of arguments list
+        args_length = len(sys.argv)
+
+        #converts args to ints
+        args_to_ints = [int(a) for a in sys.argv[1:]]
+
+        if args_length == 1:
+            print(calendar.month(year, month))
+        elif args_length == 2:
+            print(calendar.month(year, args_to_ints[0]))
+        elif args_length == 3:
+            print(calendar.month(args_to_ints[1], args_to_ints[0]))
+    except:
+        print("Invalid arguments. Inputs must be in format `14_cal.py mm yyyy ")
+
+render_calendar()
